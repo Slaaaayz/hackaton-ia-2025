@@ -609,4 +609,107 @@ body.lights-on .instructions {
     .card-content {
         padding: 1rem;
     }
+}
+
+/* Styles pour la section Solutions */
+.solutions-intro {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    text-align: center;
+    color: #e0e0e0;
+}
+
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.solution-card {
+    background: rgba(10, 25, 47, 0.8);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid #3498db;
+    display: flex;
+    flex-direction: column;
+}
+
+.solution-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.solution-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.solution-card h3 {
+    color: #3498db;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.solution-card p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.solution-impact {
+    font-weight: bold;
+    color: #f39c12;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 0.8rem;
+    margin-top: auto;
+}
+
+.solutions-cta {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(10, 25, 47, 0.6);
+    border-radius: 10px;
+}
+
+.solutions-cta p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.action-button {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.action-button:hover {
+    background: #2980b9;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .solutions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .solution-card {
+        padding: 1.2rem;
+    }
 } 
