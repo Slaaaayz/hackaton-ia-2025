@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const flashlight = document.querySelector('.flashlight');
     const container = document.querySelector('.flashlight-container');

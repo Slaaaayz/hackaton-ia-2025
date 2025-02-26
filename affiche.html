@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luttons contre la pollution lumineuse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .poster {
+            width: 297mm; /* A4 paysage */
+            height: 210mm;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background-color: #000;
+            display: flex;
+        }
+        
+        /* Image de fond ciel étoilé */
+        .starry-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            z-index: 0;
+        }
+        
+        /* Barre latérale */
+        .sidebar {
+            width: 30px;
+            height: 100%;
+            background-color: #0a4b78; /* Bleu foncé */
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Contenu principal */
+        .content {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* En-tête */
+        .header {
+            margin-bottom: 30px;
+        }
+        
+        .tagline {
+            font-size: 18px;
+            color: #89CFF0;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .title-container {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .title-small {
+            font-size: 24px;
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        
+        .title-large {
+            font-size: 72px;
+            font-weight: 800;
+            color: #3498db; /* Bleu élégant */
+            line-height: 1;
+            text-transform: uppercase;
+        }
+        
+        /* Éclipses */
+        .eclipse-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .eclipse {
+            position: absolute;
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+        }
+        
+        .eclipse-1 {
+            width: 150px;
+            height: 150px;
+            background-color: #000;
+            top: 80px;
+            right: 100px;
+            box-shadow: 0 0 60px rgba(255, 255, 255, 0.8);
+        }
+        
+        .eclipse-2 {
+            width: 200px;
+            height: 200px;
+            background-color: #000;
+            bottom: 100px;
+            left: 80px;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.6);
+        }
+        
+        .eclipse-3 {
+            width: 120px;
+            height: 120px;
+            background-color: #000;
+            bottom: 50px;
+            right: 150px;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Corps principal */
+        .main-content {
+            display: flex;
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .text-section {
+            flex: 1;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+        
+        .highlight {
+            color: #3498db;
+            font-weight: 600;
+        }
+        
+        /* Solutions section */
+        .solutions-section {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .solutions-box {
+            background-color: rgba(10, 75, 120, 0.8);
+            padding: 30px;
+            border-radius: 5px;
+            margin-top: 50px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .solutions-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+        
+        .solutions-list {
+            list-style: none;
+        }
+        
+        .solution-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .solution-bullet {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .solution-text {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+        
+        /* Appel à l'action */
+        .cta-section {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .cta-button {
+            background-color: #3498db;
+            color: white;
+            font-weight: 700;
+            padding: 15px 30px;
+            font-size: 18px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+        
+        .cta-link {
+            margin-left: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #89CFF0;
+        }
+        
+        /* Sources */
+        .sources-section {
+            margin-top: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 12px;
+            color: #aaa;
+            max-width: 90%;
+        }
+        
+        .sources-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #3498db;
+            font-size: 14px;
+        }
+        
+        .sources-list {
+            list-style: none;
+        }
+        
+        .source-item {
+            margin-bottom: 3px;
+            font-size: 11px;
+        }
+        
+        .source-link {
+            color: #89CFF0;
+            text-decoration: none;
+        }
+        
+        /* Hashtags */
+        .hashtags {
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            
+            .poster {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="starry-background"></div>
+        <div class="sidebar"></div>
+        
+        <div class="eclipse-container">
+            <div class="eclipse eclipse-1"></div>
+            <div class="eclipse eclipse-2"></div>
+            <div class="eclipse eclipse-3"></div>
+        </div>
+        
+        <div class="content">
+            <header class="header">
+                <p class="tagline">Préservons notre ciel nocturne</p>
+                <div class="title-container">
+                    <h2 class="title-small">Luttons contre la</h2>
+                    <h1 class="title-large">Pollution Lumineuse</h1>
+                </div>
+            </header>
+            
+            <main class="main-content">
+                <div class="text-section">
+                    <p class="description">
+                        La pollution lumineuse est l'excès de lumière artificielle qui perturbe l'environnement nocturne. Elle affecte la biodiversité, notre santé et nous prive de la beauté du ciel étoilé.
+                    </p>
+                    
+                    <p class="description">
+                        <span class="highlight">83% de la population mondiale</span> ne peut plus voir la Voie lactée à cause de l'éclairage artificiel excessif. Chaque année, <span class="highlight">1 milliard d'oiseaux</span> meurent en collision avec des bâtiments éclairés.
+                    </p>
+                    
+                    <p class="description">
+                        Les travailleurs de nuit exposés à la lumière artificielle ont <span class="highlight">50% de risque accru</span> de développer certains cancers. De plus, <span class="highlight">40% de l'éclairage public</span> est gaspillé vers le ciel, représentant une perte énergétique considérable.
+                    </p>
+                    
+                    <div class="cta-section">
+                        <a href="http://127.0.0.1:5000" target="_blank" class="cta-button">Agir maintenant</a>
+                        <span class="cta-link">cieletoile.org</span>
+                    </div>
+                    
+                    <div class="sources-section">
+                        <h4 class="sources-title">Sources</h4>
+                        <ul class="sources-list">
+                            <li class="source-item">• Falchi, F. et al. (2016). <em>The new world atlas of artificial night sky brightness</em>. Science Advances, 2(6).</li>
+                            <li class="source-item">• Loss, S. R. et al. (2014). <em>Bird–building collisions in the United States</em>. The Condor, 116(1), 8-23.</li>
+                            <li class="source-item">• ANPCEN - Association Nationale pour la Protection du Ciel et de l'Environnement Nocturnes (2021).</li>
+                            <li class="source-item">• Image de fond: <a href="https://unsplash.com/photos/star-during-night-time-1d0c0975c63e" class="source-link">Tyler Lastovich sur Unsplash</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="solutions-section">
+                    <div class="solutions-box">
+                        <h3 class="solutions-title">Solutions concrètes</h3>
+                        <ul class="solutions-list">
+                            <li class="solution-item">
+                                <div class="solution-bullet">•</div>
+                                <div class="solution-text">Orienter les lampes vers le sol uniquement</div>
+                            </li>
+                            <li class="solution-item">
+                                <div class="solution-bullet">•</div>
+                                <div class="solution-text">Utiliser des LED ambrées (moins de 3000K)</div>
+                            </li>
+                            <li class="solution-item">
+                                <div class="solution-bullet">•</div>
+                                <div class="solution-text">Éteindre les lumières inutiles la nuit</div>
+                            </li>
+                            <li class="solution-item">
+                                <div class="solution-bullet">•</div>
+                                <div class="solution-text">Installer des détecteurs de mouvement</div>
+                            </li>
+                            <li class="solution-item">
+                                <div class="solution-bullet">•</div>
+                                <div class="solution-text">Soutenir les initiatives locales comme les "Réserves de ciel étoilé"</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+            
+            <footer class="footer">
+                <div class="hashtags">
+                    #cieletoile   #pollutionlumineuse   #environnement
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html> 

@@ -9,11 +9,8 @@ def index():
     return send_from_directory('.', 'index.html')
 
 @app.route('/<path:path>')
-def serve_file(path):
-    if os.path.exists(path):
-        return send_from_directory('.', path)
-    else:
-        return "File not found", 404
+def serve_static(path):
+    return send_from_directory('.', path)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

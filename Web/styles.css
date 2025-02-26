@@ -57,7 +57,7 @@ body {
     width: 100%;
     height: 100%;
     background-color: #070b15;
-    background-image: url('fond.png');
+    background-image: url('/fond.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -524,4 +524,89 @@ body.lights-on button,
 body.lights-on .toggle-button,
 body.lights-on .instructions {
     cursor: pointer !important;
+}
+
+/* Styles pour les cards existantes */
+.grid-item.card {
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.grid-item.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles pour les nouvelles featured cards */
+.featured-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.featured-card {
+    flex: 1 1 400px;
+    background: rgba(10, 25, 47, 0.8);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid #3498db;
+}
+
+.featured-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card-icon {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-content {
+    padding: 1.5rem 1.5rem 1.5rem 0;
+}
+
+.card-content h3 {
+    color: #3498db;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.card-content p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.card-stat {
+    font-weight: bold;
+    color: #f39c12;
+    font-size: 1.1rem !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 0.8rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .featured-cards {
+        flex-direction: column;
+    }
+    
+    .featured-card {
+        flex-direction: column;
+    }
+    
+    .card-icon {
+        padding: 1rem;
+    }
+    
+    .card-content {
+        padding: 1rem;
+    }
 } 
